@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 2.8.12)
+project(nCine-android-libraries NONE)
+
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+get_filename_component(PARENT_SOURCE_DIR ${CMAKE_SOURCE_DIR} DIRECTORY)
+set(DESTINATION_PATH ${PARENT_SOURCE_DIR}/nCine-android-external CACHE STRING "Set the destination directory where files will be copied")
+set(EP_BASE "${CMAKE_BINARY_DIR}/ExternalProjects")
+set_property(DIRECTORY PROPERTY "EP_BASE" ${EP_BASE})
+
+if(NOT DEFINED CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE "Release")
+	message(STATUS "CMAKE_BUILD_TYPE set by default to: " ${CMAKE_BUILD_TYPE})
+else()
+	message(STATUS "CMAKE_BUILD_TYPE is: " ${CMAKE_BUILD_TYPE})
+endif()
+
+set(NDK_DIR $ENV{ANDROID_NDK_HOME} CACHE PATH "Set the path to the Android NDK")
+
+if(NOT DEFINED TOOLCHAIN_ROOT)
+	if(DEFINED $ENV{TOOLCHAIN_ROOT})
+		set(TOOLCHAIN_ROOT $ENV{TOOLCHAIN_ROOT})
+		message(STATUS "TOOLCHAIN_ROOT set to environment variable: " ${TOOLCHAIN_ROOT})
+	else()
+		message(FATAL_ERROR "TOOLCHAIN_ROOT is not set")
+	endif()
+else()
+	message(STATUS "TOOLCHAIN_ROOT is: " ${TOOLCHAIN_ROOT})
+endif()
+
+set(ARCH "armeabi-v7a" CACHE STRING "Architecture")
+set_property(CACHE ARCH PROPERTY STRINGS armeabi-v7a arm64-v8a x86_64)
+message(STATUS "ARCH is: " ${ARCH})
+
+include(arch_${ARCH})
+include(crosscompile_args)
+
+include(ExternalProject)
+include(ProcessorCount)
+ProcessorCount(CPUS)
+set(PARALLEL_MAKE make -j${CPUS})
+
+include(webp)
+include(png)
+include(ogg)
+include(vorbis)
+include(openal-soft)

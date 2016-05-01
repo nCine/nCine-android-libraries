@@ -1,0 +1,12 @@
+diff -Naur project_webp.orig/configure project_webp/configure
+--- project_webp.orig/configure	2015-12-18 08:13:25.000000000 +0000
++++ project_webp/configure	2016-03-26 20:51:25.636690518 +0000
+@@ -10686,7 +10686,7 @@
+   need_lib_prefix=no
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+-  soname_spec='${libname}${release}${shared_ext}$major'
++  soname_spec='${libname}${release}${shared_ext}'
+   finish_cmds='PATH="\$PATH:/sbin" ldconfig -n $libdir'
+   shlibpath_var=LD_LIBRARY_PATH
+   shlibpath_overrides_runpath=no
