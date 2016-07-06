@@ -1,17 +1,19 @@
-diff -Naur project_png.orig/CMakeLists.txt project_png/CMakeLists.txt
---- project_png.orig/CMakeLists.txt	2016-01-15 15:52:12.000000000 +0000
-+++ project_png/CMakeLists.txt	2016-03-26 13:11:19.867632255 +0000
-@@ -259,13 +259,6 @@
+diff -ur project_png.orig/CMakeLists.txt project_png/CMakeLists.txt
+--- project_png.orig/CMakeLists.txt	2016-06-09 12:44:58.000000000 +0100
++++ project_png/CMakeLists.txt	2016-07-06 18:13:24.461083908 +0100
+@@ -693,15 +677,6 @@
+   CREATE_SYMLINK(${PNGLIB_NAME}-config libpng-config)
  endif(NOT WIN32 OR CYGWIN OR MINGW)
  
- # SET UP LINKS
+-# SET UP LINKS
 -if(PNG_SHARED)
--  set_target_properties(${PNG_LIB_NAME} PROPERTIES
--#   VERSION 16.${PNGLIB_RELEASE}.1.6.21
+-  set_target_properties(png PROPERTIES
+-#   VERSION 16.${PNGLIB_RELEASE}.1.6.23
 -    VERSION 16.${PNGLIB_RELEASE}.0
 -    SOVERSION 16
 -    CLEAN_DIRECT_OUTPUT 1)
 -endif()
- if(PNG_STATIC)
-   # MSVC doesn't use a different file extension for shared vs. static
-   # libs.  We are able to change OUTPUT_NAME to remove the _static
+-
+ # If CMake > 2.4.x, we set a variable used below to export
+ # targets to an export file.
+ # TODO: Use VERSION_GREATER after our cmake_minimum_required >= 2.6.2

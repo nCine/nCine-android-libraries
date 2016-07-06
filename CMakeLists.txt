@@ -40,7 +40,7 @@ ProcessorCount(CPUS)
 set(PARALLEL_MAKE make -j${CPUS})
 
 include(webp)
-include(png)
+#include(png)
 include(ogg)
 include(vorbis)
 include(openal-soft)

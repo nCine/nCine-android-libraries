@@ -20,5 +20,5 @@ This repository contains the scripts to easily cross-compile the libraries neede
 Create an Android standalone toolchain for at least one of the supported architectures using the script from the NDK, then:
 
 ```
-cmake -H. -B../nCine-android-libraries-build -DTOOLCHAIN_ROOT=[parent path to toolchain(s)] -DARCH=[supported arch]
+cmake -HnCine-android-libraries -BnCine-android-libraries-build -DTOOLCHAIN_ROOT=[parent path to toolchain(s)] -DARCH=[supported architecture]
 ```
