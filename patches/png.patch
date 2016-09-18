@@ -1,14 +1,26 @@
-diff -ur project_png.orig/CMakeLists.txt project_png/CMakeLists.txt
---- project_png.orig/CMakeLists.txt	2016-06-09 12:44:58.000000000 +0100
-+++ project_png/CMakeLists.txt	2016-07-06 18:13:24.461083908 +0100
-@@ -693,15 +677,6 @@
+--- project_png.orig/CMakeLists.txt	2016-09-01 04:26:44.000000000 +0100
++++ project_png/CMakeLists.txt	2016-09-18 12:23:26.006647451 +0100
+@@ -360,6 +360,12 @@
+   pngwtran.c
+   pngwutil.c
+ )
++
++get_filename_component(COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
++if(COMPILER_NAME STREQUAL arm-linux-androideabi-gcc OR COMPILER_NAME STREQUAL aarch64-linux-android-gcc)
++	list(APPEND libpng_sources arm/arm_init.c arm/filter_neon_intrinsics.c)
++endif()
++
+ set(pngtest_sources
+   pngtest.c
+ )
+@@ -693,15 +699,6 @@
    CREATE_SYMLINK(${PNGLIB_NAME}-config libpng-config)
  endif(NOT WIN32 OR CYGWIN OR MINGW)
  
 -# SET UP LINKS
 -if(PNG_SHARED)
 -  set_target_properties(png PROPERTIES
--#   VERSION 16.${PNGLIB_RELEASE}.1.6.23
+-#   VERSION 16.${PNGLIB_RELEASE}.1.6.25
 -    VERSION 16.${PNGLIB_RELEASE}.0
 -    SOVERSION 16
 -    CLEAN_DIRECT_OUTPUT 1)

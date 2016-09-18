@@ -29,6 +29,7 @@ endif()
 
 set(ARCH "armeabi-v7a" CACHE STRING "Architecture")
 set_property(CACHE ARCH PROPERTY STRINGS armeabi-v7a arm64-v8a x86_64)
+message(STATUS "Available architectures are: armeabi-v7a, arm64-v8a, x86_64")
 message(STATUS "ARCH is: " ${ARCH})
 
 include(arch_${ARCH})
@@ -40,7 +41,7 @@ ProcessorCount(CPUS)
 set(PARALLEL_MAKE make -j${CPUS})
 
 include(webp)
-#include(png)
+include(png)
 include(ogg)
 include(vorbis)
 include(openal-soft)
