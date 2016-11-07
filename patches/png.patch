@@ -1,5 +1,5 @@
---- project_png.orig/CMakeLists.txt	2016-09-01 04:26:44.000000000 +0100
-+++ project_png/CMakeLists.txt	2016-09-18 12:23:26.006647451 +0100
+--- project_png.orig/CMakeLists.txt	2016-10-20 01:07:24.000000000 +0100
++++ project_png/CMakeLists.txt	2016-11-07 14:18:59.896322300 +0000
 @@ -360,6 +360,12 @@
    pngwtran.c
    pngwutil.c
@@ -20,7 +20,7 @@
 -# SET UP LINKS
 -if(PNG_SHARED)
 -  set_target_properties(png PROPERTIES
--#   VERSION 16.${PNGLIB_RELEASE}.1.6.25
+-#   VERSION 16.${PNGLIB_RELEASE}.1.6.26
 -    VERSION 16.${PNGLIB_RELEASE}.0
 -    SOVERSION 16
 -    CLEAN_DIRECT_OUTPUT 1)
