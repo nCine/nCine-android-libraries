@@ -1,6 +1,7 @@
 set(ARCH x86_64)
 set(HOST x86_64-linux-android)
 set(TOOLCHAIN ${TOOLCHAIN_ROOT}/toolchain-${ARCH})
+set(PROCESSOR x86_64) # for CMAKE_SYSTEM_PROCESSOR
 
 set(NDK_CFLAGS "-ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes")
 set(NDK_LDFLAGS "-no-canonical-prefixes")
