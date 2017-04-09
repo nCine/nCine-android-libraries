@@ -1,7 +1,7 @@
-diff -Naur project_webp.orig/configure project_webp/configure
---- project_webp.orig/configure	2015-12-18 08:13:25.000000000 +0000
-+++ project_webp/configure	2016-03-26 20:51:25.636690518 +0000
-@@ -10686,7 +10686,7 @@
+diff -ur project_webp.orig/configure project_webp/configure
+--- project_webp.orig/configure	2017-01-30 21:41:24.000000000 +0100
++++ project_webp/configure	2017-04-09 19:45:54.921600199 +0200
+@@ -10691,7 +10691,7 @@
    need_lib_prefix=no
    need_version=no
    library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'

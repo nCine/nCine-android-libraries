@@ -1,7 +1,7 @@
 set(TARGET_WEBP webp)
-set(URL_WEBP http://downloads.webmproject.org/releases/webp/libwebp-0.5.2.tar.gz)
-set(URL_MD5_WEBP 6f36b38c2483b32906f946a621eb0c2e)
-set(LIBNAME_WEBP libwebp.so.6.0.2)
+set(URL_WEBP http://downloads.webmproject.org/releases/webp/libwebp-0.6.0.tar.gz)
+set(URL_MD5_WEBP 19a6e926ab1721268df03161b84bb4a0)
+set(LIBNAME_WEBP libwebp.so.7.0.0)
 set(DEST_WEBP ${DESTINATION_PATH}/webp)
 
 set(CPUFEATURES ${NDK_DIR}/sources/android/cpufeatures)
