@@ -1,13 +1,12 @@
-diff -Naur project_openal.orig/CMakeLists.txt project_openal/CMakeLists.txt
---- project_openal.orig/CMakeLists.txt	2015-12-10 12:45:30.000000000 +0000
-+++ project_openal/CMakeLists.txt	2016-03-26 13:10:05.044295720 +0000
-@@ -1090,8 +1090,7 @@
- IF(HAVE_JACK)
-     SET_PROPERTY(TARGET ${LIBNAME} APPEND PROPERTY INCLUDE_DIRECTORIES ${JACK_INCLUDE_DIRS})
+diff -ur project_openal.orig/CMakeLists.txt project_openal/CMakeLists.txt
+--- project_openal.orig/CMakeLists.txt	2017-06-04 16:31:22.000000000 +0200
++++ project_openal/CMakeLists.txt	2017-06-29 00:11:39.688714613 +0200
+@@ -1239,8 +1239,6 @@
+     ENDIF()
  ENDIF()
--SET_TARGET_PROPERTIES(${LIBNAME} PROPERTIES VERSION ${LIB_VERSION}
--                                            SOVERSION ${LIB_MAJOR_VERSION})
-+
- IF(WIN32 AND NOT LIBTYPE STREQUAL "STATIC")
-     SET_TARGET_PROPERTIES(${LIBNAME} PROPERTIES PREFIX "")
  
+-SET_TARGET_PROPERTIES(OpenAL PROPERTIES VERSION ${LIB_VERSION}
+-                                        SOVERSION ${LIB_MAJOR_VERSION})
+ SET_TARGET_PROPERTIES(OpenAL PROPERTIES OUTPUT_NAME ${LIBNAME})
+ 
+ if(WIN32 AND NOT LIBTYPE STREQUAL "STATIC")

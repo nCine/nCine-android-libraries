@@ -1,25 +1,14 @@
 diff -ur project_png.orig/CMakeLists.txt project_png/CMakeLists.txt
---- project_png.orig/CMakeLists.txt	2017-01-05 13:52:08.000000000 +0000
-+++ project_png/CMakeLists.txt	2017-01-14 13:58:20.624838899 +0000
-@@ -78,8 +78,8 @@
- set(DFA_XTRA "" CACHE FILEPATH "File containing extra configuration settings")
- 
- # set definitions and sources for arm
--if(${CMAKE_SYSTEM_PROCESSOR} MATCHES "^arm" OR
--  ${CMAKE_SYSTEM_PROCESSOR} MATCHES "^aarch64")
-+if(CMAKE_SYSTEM_PROCESSOR MATCHES "^arm" OR
-+  CMAKE_SYSTEM_PROCESSOR MATCHES "^aarch64")
-   set(PNG_ARM_NEON_POSSIBLE_VALUES check on off)
-   set(PNG_ARM_NEON "check" CACHE STRING "Enable ARM NEON optimizations:
-      check: (default) use internal checking code;
-@@ -732,15 +732,6 @@
+--- project_png.orig/CMakeLists.txt	2017-06-28 20:46:03.000000000 +0200
++++ project_png/CMakeLists.txt	2017-06-29 00:08:35.018710429 +0200
+@@ -767,15 +767,6 @@
    CREATE_SYMLINK(${PNGLIB_NAME}-config libpng-config)
  endif(NOT WIN32 OR CYGWIN OR MINGW)
  
 -# SET UP LINKS
 -if(PNG_SHARED)
 -  set_target_properties(png PROPERTIES
--#   VERSION 16.${PNGLIB_RELEASE}.1.6.28
+-#   VERSION 16.${PNGLIB_RELEASE}.1.6.30
 -    VERSION 16.${PNGLIB_RELEASE}.0
 -    SOVERSION 16
 -    CLEAN_DIRECT_OUTPUT 1)
@@ -28,4 +17,3 @@ diff -ur project_png.orig/CMakeLists.txt project_png/CMakeLists.txt
  # If CMake > 2.4.x, we set a variable used below to export
  # targets to an export file.
  # TODO: Use VERSION_GREATER after our cmake_minimum_required >= 2.6.2
-Only in project_png: CMakeLists.txt.orig

@@ -1,6 +1,6 @@
 set(TARGET_OPENAL openal)
-set(URL_OPENAL http://kcat.strangesoft.net/openal-releases/openal-soft-1.17.1.tar.bz2)
-set(URL_MD5_OPENAL 4e1cff46cdb3ac147745dea33ad92687)
+set(URL_OPENAL http://kcat.strangesoft.net/openal-releases/openal-soft-1.18.0.tar.bz2)
+set(URL_MD5_OPENAL 704d41343b52dd04115de2dcdac5de03)
 set(DEST_OPENAL ${DESTINATION_PATH}/openal)
 
 ExternalProject_Add(project_${TARGET_OPENAL}
