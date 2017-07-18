@@ -12,11 +12,11 @@ ExternalProject_Add(project_${TARGET_WEBP}
 	URL ${URL_WEBP}
 	URL_MD5 ${URL_MD5_WEBP}
 	PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/patches/webp.patch
-	CONFIGURE_COMMAND ${TOOLCHAIN}/bin/${HOST}-gcc -c -I${CPUFEATURES} ${CPUFEATURES}/cpu-features.c -o ${EP_BASE}/Source/project_${TARGET_WEBP}/cpu-features.o
-		COMMAND ${TOOLCHAIN}/bin/${HOST}-ar rcs ${EP_BASE}/Source/project_${TARGET_WEBP}/libcpufeatures.a ${EP_BASE}/Source/project_${TARGET_WEBP}/cpu-features.o
+	CONFIGURE_COMMAND ${TOOLCHAIN}/bin/clang -c -I${CPUFEATURES} ${CPUFEATURES}/cpu-features.c -o ${EP_BASE}/Source/project_${TARGET_WEBP}/cpu-features.o
+		COMMAND ${TOOLCHAIN}/bin/llvm-ar rcs ${EP_BASE}/Source/project_${TARGET_WEBP}/libcpufeatures.a ${EP_BASE}/Source/project_${TARGET_WEBP}/cpu-features.o
 		COMMAND ./configure ${CONFIGURE_TOOLCHAIN_ARGS_NOFLAGS} CFLAGS=${WEBP_CFLAGS} LDFLAGS=${WEBP_LDFLAGS} --enable-shared=yes --enable-static=yes
 	BUILD_COMMAND ${PARALLEL_MAKE}
-		COMMAND ${TOOLCHAIN}/bin/${HOST}-ar r ${EP_BASE}/Source/project_${TARGET_WEBP}/src/.libs/libwebp.a ${EP_BASE}/Source/project_${TARGET_WEBP}/cpu-features.o
+		COMMAND ${TOOLCHAIN}/bin/llvm-ar r ${EP_BASE}/Source/project_${TARGET_WEBP}/src/.libs/libwebp.a ${EP_BASE}/Source/project_${TARGET_WEBP}/cpu-features.o
 	BUILD_IN_SOURCE 1
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_WEBP}/src/.libs/${LIBNAME_WEBP} ${DEST_WEBP}/${ARCH}/libwebp.so
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_WEBP}/src/.libs/libwebp.a ${DEST_WEBP}/${ARCH}/libwebp.a
