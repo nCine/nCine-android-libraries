@@ -1,7 +1,7 @@
 diff -ur project_openal.orig/CMakeLists.txt project_openal/CMakeLists.txt
---- project_openal.orig/CMakeLists.txt	2017-07-30 07:09:21.000000000 +0200
-+++ project_openal/CMakeLists.txt	2017-08-03 23:44:31.235034215 +0200
-@@ -1236,10 +1236,7 @@
+--- project_openal.orig/CMakeLists.txt	2017-09-24 15:41:50.000000000 +0200
++++ project_openal/CMakeLists.txt	2017-10-29 19:56:55.894227311 +0100
+@@ -1257,10 +1257,7 @@
          SET_TARGET_PROPERTIES(${IMPL_TARGET} PROPERTIES PREFIX "")
      ENDIF()
  ENDIF()
