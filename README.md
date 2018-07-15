@@ -15,6 +15,7 @@ This repository contains the scripts to easily cross-compile the libraries neede
 - libpng
 - libwebp
 - OpenAL-soft
+- Lua
 
 ## Build
 Create an Android standalone toolchain for at least one of the supported architectures using the script from the NDK, then:
