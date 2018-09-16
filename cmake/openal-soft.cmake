@@ -1,6 +1,6 @@
 set(TARGET_OPENAL openal)
-set(URL_OPENAL http://kcat.strangesoft.net/openal-releases/openal-soft-1.18.2.tar.bz2)
-set(URL_MD5_OPENAL d4eeb0889812e2fdeaa1843523d76190)
+set(URL_OPENAL http://kcat.strangesoft.net/openal-releases/openal-soft-1.19.0.tar.bz2)
+set(URL_MD5_OPENAL 1f59accf1a187384e155e82663aa3f9a)
 set(DEST_OPENAL ${DESTINATION_PATH}/openal)
 
 set(LIBTYPE_OPENAL "DYNAMIC")

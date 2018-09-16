@@ -1,7 +1,7 @@
-diff -ur project_openal.orig/CMakeLists.txt project_openal/CMakeLists.txt
---- project_openal.orig/CMakeLists.txt	2017-09-24 15:41:50.000000000 +0200
-+++ project_openal/CMakeLists.txt	2017-10-29 19:56:55.894227311 +0100
-@@ -1257,10 +1257,7 @@
+diff -ur openal-soft-1.19.0.orig/CMakeLists.txt openal-soft-1.19.0/CMakeLists.txt
+--- openal-soft-1.19.0.orig/CMakeLists.txt	2018-09-06 21:35:18.000000000 +0000
++++ openal-soft-1.19.0/CMakeLists.txt	2018-09-16 12:10:54.470036532 +0000
+@@ -1433,10 +1433,7 @@
          SET_TARGET_PROPERTIES(${IMPL_TARGET} PROPERTIES PREFIX "")
      ENDIF()
  ENDIF()
@@ -10,6 +10,6 @@ diff -ur project_openal.orig/CMakeLists.txt project_openal/CMakeLists.txt
 -    SOVERSION ${LIB_MAJOR_VERSION}
 -)
 +SET_TARGET_PROPERTIES(${IMPL_TARGET} PROPERTIES OUTPUT_NAME ${LIBNAME})
- SET_PROPERTY(TARGET ${IMPL_TARGET} APPEND PROPERTY INCLUDE_DIRECTORIES
-     "${OpenAL_SOURCE_DIR}/OpenAL32/Include" "${OpenAL_SOURCE_DIR}/Alc"
- )
+ TARGET_COMPILE_DEFINITIONS(${IMPL_TARGET}
+     PRIVATE AL_BUILD_LIBRARY AL_ALEXT_PROTOTYPES ${CPP_DEFS})
+ TARGET_INCLUDE_DIRECTORIES(${IMPL_TARGET}

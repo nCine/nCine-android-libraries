@@ -1,6 +1,6 @@
 set(TARGET_PNG png)
-set(URL_PNG http://downloads.sourceforge.net/project/libpng/libpng16/1.6.34/libpng-1.6.34.tar.gz)
-set(URL_MD5_PNG 03fbc5134830240104e96d3cda648e71)
+set(URL_PNG http://downloads.sourceforge.net/project/libpng/libpng16/1.6.35/libpng-1.6.35.tar.gz)
+set(URL_MD5_PNG d94d9587c421ac42316b6ab8f64f1b85)
 set(DEST_PNG ${DESTINATION_PATH}/png)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")

@@ -1,6 +1,6 @@
-diff -Naur libpng-1.6.34.orig/CMakeLists.txt libpng-1.6.34/CMakeLists.txt
---- libpng-1.6.34.orig/CMakeLists.txt	2017-09-29 08:40:57.000000000 +0000
-+++ libpng-1.6.34/CMakeLists.txt	2018-07-09 21:03:26.536558535 +0000
+diff -ur libpng-1.6.35.orig/CMakeLists.txt libpng-1.6.35/CMakeLists.txt
+--- libpng-1.6.35.orig/CMakeLists.txt	2018-07-16 03:58:00.000000000 +0000
++++ libpng-1.6.35/CMakeLists.txt	2018-09-16 12:08:32.556696708 +0000
 @@ -841,15 +841,6 @@
    CREATE_SYMLINK(libpng-config FILE ${PNGLIB_NAME}-config)
  endif(NOT WIN32 OR CYGWIN OR MINGW)
@@ -8,7 +8,7 @@ diff -Naur libpng-1.6.34.orig/CMakeLists.txt libpng-1.6.34/CMakeLists.txt
 -# SET UP LINKS
 -if(PNG_SHARED)
 -  set_target_properties(png PROPERTIES
--#   VERSION 16.${PNGLIB_RELEASE}.1.6.34
+-#   VERSION 16.${PNGLIB_RELEASE}.1.6.35
 -    VERSION 16.${PNGLIB_RELEASE}.0
 -    SOVERSION 16
 -    CLEAN_DIRECT_OUTPUT 1)
