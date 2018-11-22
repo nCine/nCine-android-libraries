@@ -1,6 +1,6 @@
-diff -ur openal-soft-1.19.0.orig/CMakeLists.txt openal-soft-1.19.0/CMakeLists.txt
---- openal-soft-1.19.0.orig/CMakeLists.txt	2018-09-06 21:35:18.000000000 +0000
-+++ openal-soft-1.19.0/CMakeLists.txt	2018-09-16 12:10:54.470036532 +0000
+diff -ur openal-soft-openal-soft-1.19.1.orig/CMakeLists.txt openal-soft-openal-soft-1.19.1/CMakeLists.txt
+--- openal-soft-openal-soft-1.19.1.orig/CMakeLists.txt	2018-10-11 22:05:31.000000000 +0000
++++ openal-soft-openal-soft-1.19.1/CMakeLists.txt	2018-11-22 18:07:29.490044863 +0000
 @@ -1433,10 +1433,7 @@
          SET_TARGET_PROPERTIES(${IMPL_TARGET} PROPERTIES PREFIX "")
      ENDIF()
