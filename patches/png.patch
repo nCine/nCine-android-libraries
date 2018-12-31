@@ -1,19 +1,19 @@
-diff -ur libpng-1.6.35.orig/CMakeLists.txt libpng-1.6.35/CMakeLists.txt
---- libpng-1.6.35.orig/CMakeLists.txt	2018-07-16 03:58:00.000000000 +0000
-+++ libpng-1.6.35/CMakeLists.txt	2018-09-16 12:08:32.556696708 +0000
-@@ -841,15 +841,6 @@
-   CREATE_SYMLINK(libpng-config FILE ${PNGLIB_NAME}-config)
- endif(NOT WIN32 OR CYGWIN OR MINGW)
+diff -ur libpng-1.6.36.orig/CMakeLists.txt libpng-1.6.36/CMakeLists.txt
+--- libpng-1.6.36.orig/CMakeLists.txt	2018-12-01 14:36:00.000000000 +0000
++++ libpng-1.6.36/CMakeLists.txt	2018-12-31 18:30:16.173529490 +0000
+@@ -835,15 +835,6 @@
+   create_symlink(libpng-config FILE ${PNGLIB_NAME}-config)
+ endif()
  
 -# SET UP LINKS
 -if(PNG_SHARED)
 -  set_target_properties(png PROPERTIES
--#   VERSION 16.${PNGLIB_RELEASE}.1.6.35
+-#   VERSION 16.${PNGLIB_RELEASE}.1.6.36
 -    VERSION 16.${PNGLIB_RELEASE}.0
 -    SOVERSION 16
 -    CLEAN_DIRECT_OUTPUT 1)
 -endif()
 -
- # If CMake > 2.4.x, we set a variable used below to export
- # targets to an export file.
- # TODO: Use VERSION_GREATER after our cmake_minimum_required >= 2.6.2
+ # INSTALL
+ if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL)
+   install(TARGETS ${PNG_LIB_TARGETS}
