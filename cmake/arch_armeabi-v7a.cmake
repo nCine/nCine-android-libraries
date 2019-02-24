@@ -1,6 +1,6 @@
 set(ARCH armeabi-v7a)
 set(HOST arm-linux-androideabi)
-set(TOOLCHAIN ${TOOLCHAIN_ROOT}/toolchain-${ARCH})
+set(TARGET armv7a-linux-androideabi${PLATFORM})
 set(PROCESSOR arm) # for CMAKE_SYSTEM_PROCESSOR
 
 set(WITH_ARM_THUMB ON)

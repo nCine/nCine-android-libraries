@@ -1,6 +1,14 @@
-diff -ur libpng-1.6.36.orig/CMakeLists.txt libpng-1.6.36/CMakeLists.txt
---- libpng-1.6.36.orig/CMakeLists.txt	2018-12-01 14:36:00.000000000 +0000
-+++ libpng-1.6.36/CMakeLists.txt	2018-12-31 18:30:16.173529490 +0000
+--- libpng-1.6.36.orig/CMakeLists.txt	2018-12-01 15:36:00.000000000 +0100
++++ libpng-1.6.36/CMakeLists.txt	2019-02-24 17:18:12.930116683 +0100
+@@ -538,7 +538,7 @@
+   endif()
+   target_link_libraries(png ${ZLIB_LIBRARY} ${M_LIBRARY})
+ 
+-  if(UNIX AND AWK)
++  if((UNIX AND NOT ANDROID) AND AWK)
+     if(HAVE_LD_VERSION_SCRIPT)
+       set_target_properties(png PROPERTIES LINK_FLAGS
+         "-Wl,--version-script='${CMAKE_CURRENT_BINARY_DIR}/libpng.vers'")
 @@ -835,15 +835,6 @@
    create_symlink(libpng-config FILE ${PNGLIB_NAME}-config)
  endif()

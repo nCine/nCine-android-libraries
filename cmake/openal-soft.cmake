@@ -24,6 +24,6 @@ ExternalProject_Add(project_${TARGET_OPENAL}
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release" AND LIBTYPE_OPENAL STREQUAL "DYNAMIC")
 	add_custom_command(TARGET project_${TARGET_OPENAL} POST_BUILD
-		COMMAND ${TOOLCHAIN}/bin/${HOST}-strip -S ${DEST_OPENAL}/${ARCH}/libopenal.so
+		COMMAND ${STRIP} -S ${DEST_OPENAL}/${ARCH}/libopenal.so
 		COMMENT "Stripping OpenAL library")
 endif()
