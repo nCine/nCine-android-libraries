@@ -33,6 +33,9 @@ else()
 	set(HOST_TAG "linux-x86_64")
 endif()
 
+set(STRIP_SHARED_ARGS "--strip-unneeded")
+set(STRIP_STATIC_ARGS "--strip-debug")
+
 include(arch_${ARCH})
 include(crosscompile_args)
 

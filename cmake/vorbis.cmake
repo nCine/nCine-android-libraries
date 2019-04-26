@@ -26,9 +26,9 @@ ExternalProject_Add(project_${TARGET_VORBIS}
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_VORBIS} POST_BUILD
-		COMMAND ${STRIP} -S ${DEST_VORBIS}/${ARCH}/libvorbis.so
-		COMMAND ${STRIP} -S ${DEST_VORBIS}/${ARCH}/libvorbis.a
-		COMMAND ${STRIP} -S ${DEST_VORBIS}/${ARCH}/libvorbisfile.so
-		COMMAND ${STRIP} -S ${DEST_VORBIS}/${ARCH}/libvorbisfile.a
+		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_VORBIS}/${ARCH}/libvorbis.so
+		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_VORBIS}/${ARCH}/libvorbis.a
+		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_VORBIS}/${ARCH}/libvorbisfile.so
+		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_VORBIS}/${ARCH}/libvorbisfile.a
 		COMMENT "Stripping Vorbis libraries")
 endif()

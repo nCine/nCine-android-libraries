@@ -25,7 +25,7 @@ ExternalProject_Add(project_${TARGET_PNG}
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_PNG} POST_BUILD
-		COMMAND ${STRIP} -S ${DEST_PNG}/${ARCH}/${LIBNAME_PNG}.so
-		COMMAND ${STRIP} -S ${DEST_PNG}/${ARCH}/${LIBNAME_PNG}.a
+		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_PNG}/${ARCH}/${LIBNAME_PNG}.so
+		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_PNG}/${ARCH}/${LIBNAME_PNG}.a
 		COMMENT "Stripping PNG libraries")
 endif()

@@ -18,7 +18,7 @@ ExternalProject_Add(project_${TARGET_OGG}
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_OGG} POST_BUILD
-		COMMAND ${STRIP} -S ${DEST_OGG}/${ARCH}/libogg.so
-		COMMAND ${STRIP} -S ${DEST_OGG}/${ARCH}/libogg.a
+		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_OGG}/${ARCH}/libogg.so
+		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_OGG}/${ARCH}/libogg.a
 		COMMENT "Stripping OGG libraries")
 endif()

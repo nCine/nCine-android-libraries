@@ -21,7 +21,7 @@ ExternalProject_Add(project_${TARGET_LUA}
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_LUA} POST_BUILD
-		COMMAND ${STRIP} -S ${DEST_LUA}/${ARCH}/liblua.so
-		COMMAND ${STRIP} -S ${DEST_LUA}/${ARCH}/liblua.a
+		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_LUA}/${ARCH}/liblua.so
+		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_LUA}/${ARCH}/liblua.a
 		COMMENT "Stripping Lua libraries")
 endif()

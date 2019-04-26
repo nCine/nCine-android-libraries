@@ -24,7 +24,7 @@ ExternalProject_Add(project_${TARGET_WEBP}
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_WEBP} POST_BUILD
-		COMMAND ${STRIP} -S ${DEST_WEBP}/${ARCH}/libwebp.so
-		COMMAND ${STRIP} -S ${DEST_WEBP}/${ARCH}/libwebp.a
+		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_WEBP}/${ARCH}/libwebp.so
+		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_WEBP}/${ARCH}/libwebp.a
 		COMMENT "Stripping WebP libraries")
 endif()
