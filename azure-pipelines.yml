@@ -1,0 +1,83 @@
+variables:
+  deploy_file: nCine-android-external-ARCHITECTURE-VERSION.tar.gz
+  deploy_message:
+    "Push artifact from Azure Pipelines build $(Build.BuildNumber) with id $(Build.BuildId)
+
+     - nCine-android-libraries artifact from branch '$(Build.SourceBranchName)' with commit id $(Build.SourceVersion)"
+  deploy_branch: android-libraries-ARCHITECTURE
+  ndk_version: r20
+
+strategy:
+  matrix:
+    armeabi-v7a:
+      ARCH: armeabi-v7a
+
+    arm64-v8a:
+      ARCH: arm64-v8a
+
+    x86_64:
+      ARCH: x86_64
+
+pool:
+  vmImage: 'ubuntu-16.04'
+
+steps:
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y libncurses5
+
+  displayName: 'Install Build Dependencies'
+
+- script: |
+    curl -fsSL https://cmake.org/files/v3.14/cmake-3.14.5-Linux-x86_64.sh -o cmakeinstall.sh && \
+    chmod +x cmakeinstall.sh && \
+    sudo ./cmakeinstall.sh --prefix=/usr/local --exclude-subdir && \
+    rm cmakeinstall.sh
+
+  displayName: 'Install Latest CMake'
+
+- script: |
+    cd ..
+    curl -fsSL https://dl.google.com/android/repository/android-ndk-$NDK_VERSION-linux-x86_64.zip -o ndk.zip
+    unzip -q ndk.zip && rm -f ndk.zip
+
+  displayName: 'Download Android NDK'
+
+- script: |
+    export ANDROID_NDK_HOME=$PWD/../android-ndk-$NDK_VERSION
+    cmake -B ../build-$ARCH -D ARCH=$ARCH -D PLATFORM=21 -D CMAKE_BUILD_TYPE=Release
+
+  displayName: 'CMake Configuration'
+
+- script: |
+    make -j2 -C ../build-$ARCH
+
+  displayName: 'Make'
+
+- script: |
+    git config --global user.email "pipelines@azure.com"
+    git config --global user.name "Azure Pipelines"
+
+    git fetch --unshallow || true
+    export GIT_VERSION=$(set -o pipefail; git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)";)
+    cd ..
+
+    export DEPLOY_FILE=`echo $DEPLOY_FILE | sed 's/ARCHITECTURE/'"$ARCH"'/'`
+    export DEPLOY_FILE=`echo $DEPLOY_FILE | sed 's/VERSION/'"$GIT_VERSION"'/'`
+    tar cpzf $DEPLOY_FILE nCine-android-external
+
+    export DEPLOY_BRANCH=`echo $DEPLOY_BRANCH | sed 's/ARCHITECTURE/'"$ARCH"'/'`
+    git clone https://$MAPPED_GH_TOKEN@github.com/nCine/nCine-libraries-artifacts.git >/dev/null 2>&1
+    cd nCine-libraries-artifacts
+    git checkout $DEPLOY_BRANCH || git checkout --orphan $DEPLOY_BRANCH
+    git reset
+    git rm *
+    mv -f ../$DEPLOY_FILE .
+    git add $DEPLOY_FILE
+    git commit --amend -m "$(DEPLOY_MESSAGE)" || git commit -m "$(DEPLOY_MESSAGE)"
+    git push --force || git push --set-upstream origin $DEPLOY_BRANCH
+
+  displayName: 'Push Artifacts'
+  condition: succeeded()
+  env:
+    MAPPED_GH_TOKEN: $(GH_TOKEN)
