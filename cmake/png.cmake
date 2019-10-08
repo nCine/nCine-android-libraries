@@ -3,12 +3,6 @@ set(URL_PNG http://downloads.sourceforge.net/project/libpng/libpng16/1.6.36/libp
 set(URL_MD5_PNG 65afdeaa05f5ec14e31d9276143012e9)
 set(DEST_PNG ${DESTINATION_PATH}/png)
 
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-	set(LIBNAME_PNG libpng16d)
-else()
-	set(LIBNAME_PNG libpng16)
-endif()
-
 ExternalProject_Add(project_${TARGET_PNG}
 	URL ${URL_PNG}
 	URL_MD5 ${URL_PNG_MD5}
@@ -16,8 +10,8 @@ ExternalProject_Add(project_${TARGET_PNG}
 	CMAKE_ARGS -DPNG_TESTS=OFF ${CMAKE_TOOLCHAIN_ARGS}
 	BUILD_COMMAND ${PARALLEL_MAKE}
 	BUILD_IN_SOURCE 0
-	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIBNAME_PNG}.so ${DEST_PNG}/${ARCH}/${LIBNAME_PNG}.so
-		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIBNAME_PNG}.a ${DEST_PNG}/${ARCH}/${LIBNAME_PNG}.a
+	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different libpng16.so ${DEST_PNG}/${ARCH}/libpng16.so
+		COMMAND ${CMAKE_COMMAND} -E copy_if_different libpng16.a ${DEST_PNG}/${ARCH}/libpng16.a
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_PNG}/png.h ${DEST_PNG}/include/png.h
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_PNG}/pngconf.h ${DEST_PNG}/include/pngconf.h
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different pnglibconf.h ${DEST_PNG}/include/pnglibconf.h
@@ -25,7 +19,7 @@ ExternalProject_Add(project_${TARGET_PNG}
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_PNG} POST_BUILD
-		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_PNG}/${ARCH}/${LIBNAME_PNG}.so
-		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_PNG}/${ARCH}/${LIBNAME_PNG}.a
+		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_PNG}/${ARCH}/libpng16.so
+		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_PNG}/${ARCH}/libpng16.a
 		COMMENT "Stripping PNG libraries")
 endif()

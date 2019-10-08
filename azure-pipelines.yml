@@ -9,14 +9,29 @@ variables:
 
 strategy:
   matrix:
-    armeabi-v7a:
+    armeabi-v7a Debug:
       ARCH: armeabi-v7a
+      BuildType: Debug
 
-    arm64-v8a:
+    armeabi-v7a Release:
+      ARCH: armeabi-v7a
+      BuildType: Release
+
+    arm64-v8a Debug:
       ARCH: arm64-v8a
+      BuildType: Debug
 
-    x86_64:
+    arm64-v8a Release:
+      ARCH: arm64-v8a
+      BuildType: Release
+
+    x86_64 Debug:
       ARCH: x86_64
+      BuildType: Debug
+
+    x86_64 Release:
+      ARCH: x86_64
+      BuildType: Release
 
 pool:
   vmImage: 'ubuntu-16.04'
@@ -45,7 +60,7 @@ steps:
 
 - script: |
     export ANDROID_NDK_HOME=$PWD/../android-ndk-$NDK_VERSION
-    cmake -B ../build-$ARCH -D ARCH=$ARCH -D PLATFORM=21 -D CMAKE_BUILD_TYPE=Release
+    cmake -B ../build-$ARCH -D ARCH=$ARCH -D PLATFORM=21 -D CMAKE_BUILD_TYPE=$(BuildType)
 
   displayName: 'CMake Configuration'
 
@@ -78,6 +93,6 @@ steps:
     git push --force || git push --set-upstream origin $DEPLOY_BRANCH
 
   displayName: 'Push Artifacts'
-  condition: succeeded()
+  condition: and( succeeded(), eq( variables['BuildType'], 'Release' ) )
   env:
     MAPPED_GH_TOKEN: $(GH_TOKEN)
