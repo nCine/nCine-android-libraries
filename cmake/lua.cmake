@@ -1,6 +1,6 @@
 set(TARGET_LUA lua)
-set(URL_LUA https://www.lua.org/ftp/lua-5.3.5.tar.gz)
-set(URL_MD5_LUA 4f4b4f323fd3514a68e0ab3da8ce3455)
+set(URL_LUA https://www.lua.org/ftp/lua-5.4.0.tar.gz)
+set(URL_MD5_LUA dbf155764e5d433fc55ae80ea7060b60)
 set(DEST_LUA ${DESTINATION_PATH}/lua)
 
 ExternalProject_Add(project_${TARGET_LUA}
@@ -10,7 +10,7 @@ ExternalProject_Add(project_${TARGET_LUA}
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS}
 	BUILD_COMMAND ${PARALLEL_MAKE}
 	BUILD_IN_SOURCE 0
-	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different liblua5.3.so ${DEST_LUA}/${ARCH}/liblua.so
+	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different liblua5.4.so ${DEST_LUA}/${ARCH}/liblua.so
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different liblua.a ${DEST_LUA}/${ARCH}/liblua.a
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_LUA}/src/lua.h ${DEST_LUA}/include/lua.h
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_LUA}/src/luaconf.h ${DEST_LUA}/include/luaconf.h
