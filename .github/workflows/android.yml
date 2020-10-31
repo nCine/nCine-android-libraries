@@ -1,0 +1,77 @@
+name: 'Android'
+
+env:
+  DEPLOY_FILE: nCine-android-external-ARCHITECTURE-VERSION.tar.gz
+  DEPLOY_MESSAGE:
+    "Push artifact from GitHub Actions build ${{ github.run_number }} with id ${{ github.run_id }}
+
+     - nCine-android-libraries artifact from branch 'BRANCH_NAME' with commit id ${{ github.sha }}"
+  DEPLOY_BRANCH: android-libraries-ARCHITECTURE
+  NDK_VERSION: r20
+
+on: [push, workflow_dispatch]
+
+jobs:
+  Android:
+    strategy:
+      fail-fast: false
+      matrix:
+        ARCH: [armeabi-v7a, arm64-v8a, x86_64]
+        BuildType: [Debug, Release]
+
+    runs-on: 'ubuntu-18.04'
+
+    steps:
+    - name: 'Checkout code'
+      uses: actions/checkout@v2
+
+    - name: 'Install Build Dependencies'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libncurses5
+
+    - name: 'Download Android NDK'
+      run: |
+        cd ..
+        curl -fsSL https://dl.google.com/android/repository/android-ndk-$NDK_VERSION-linux-x86_64.zip -o ndk.zip
+        unzip -q ndk.zip && rm -f ndk.zip
+
+    - name: 'CMake Configuration'
+      run: |
+        export ANDROID_NDK_HOME=$PWD/../android-ndk-$NDK_VERSION
+        cmake -B ../build-${{ matrix.ARCH }} -D ARCH=${{ matrix.ARCH }} -D PLATFORM=21 -D CMAKE_BUILD_TYPE=${{ matrix.BuildType }}
+
+    - name: 'Make'
+      run: |
+        make -j2 -C ../build-${{ matrix.ARCH }}
+
+    - name: 'Push Artifacts'
+      if: matrix.BuildType == 'Release'
+      env:
+        PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+
+        export BRANCH_NAME=$(git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q --short HEAD || git rev-parse --short HEAD)
+        export DEPLOY_MESSAGE=`sed 's/BRANCH_NAME/'"$BRANCH_NAME"'/' <<< "$DEPLOY_MESSAGE"`
+
+        git fetch --unshallow || true
+        export GIT_VERSION=$(set -o pipefail; git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)";)
+        cd ..
+
+        export DEPLOY_FILE=`echo $DEPLOY_FILE | sed 's/ARCHITECTURE/'"${{ matrix.ARCH }}"'/'`
+        export DEPLOY_FILE=`echo $DEPLOY_FILE | sed 's/VERSION/'"$GIT_VERSION"'/'`
+        tar cpzf $DEPLOY_FILE nCine-android-external
+
+        export DEPLOY_BRANCH=`echo $DEPLOY_BRANCH | sed 's/ARCHITECTURE/'"${{ matrix.ARCH }}"'/'`
+        git clone https://$PUBLIC_REPO_TOKEN@github.com/nCine/nCine-libraries-artifacts.git >/dev/null 2>&1
+        cd nCine-libraries-artifacts
+        git checkout $DEPLOY_BRANCH || git checkout --orphan $DEPLOY_BRANCH
+        git reset
+        git clean -f
+        git rm * || true
+        mv -f ../$DEPLOY_FILE .
+        git add $DEPLOY_FILE
+        git commit --amend -m "$DEPLOY_MESSAGE" || git commit -m "$DEPLOY_MESSAGE"
+        git push --force || git push --set-upstream origin $DEPLOY_BRANCH

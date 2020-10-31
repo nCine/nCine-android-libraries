@@ -1,3 +1,5 @@
+[![Android](https://github.com/nCine/nCine-android-libraries/workflows/Android/badge.svg)](https://github.com/nCine/nCine-android-libraries/actions?workflow=Android)
+
 # nCine-android-libraries
 CMake scripts to build nCine dependency libraries for Android
 
