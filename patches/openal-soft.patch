@@ -1,15 +1,15 @@
-diff -ur openal-soft-1.20.1.orig/CMakeLists.txt openal-soft-1.20.1/CMakeLists.txt
---- openal-soft-1.20.1.orig/CMakeLists.txt	2020-01-24 08:28:45.000000000 +0100
-+++ openal-soft-1.20.1/CMakeLists.txt	2020-01-26 19:22:57.177431114 +0100
-@@ -1257,10 +1257,7 @@
+diff -urN openal-soft-1.21.0.orig/CMakeLists.txt openal-soft-1.21.0/CMakeLists.txt
+--- openal-soft-1.21.0.orig/CMakeLists.txt	2020-11-04 11:00:35.000000000 +0100
++++ openal-soft-1.21.0/CMakeLists.txt	2020-11-05 11:36:36.817915348 +0100
+@@ -1308,10 +1308,7 @@
      ${OpenAL_SOURCE_DIR}/common
  )
  
--SET_TARGET_PROPERTIES(${IMPL_TARGET} PROPERTIES OUTPUT_NAME ${LIBNAME}
+-set_target_properties(${IMPL_TARGET} PROPERTIES OUTPUT_NAME ${LIBNAME}
 -    VERSION ${LIB_VERSION}
 -    SOVERSION ${LIB_MAJOR_VERSION}
 -)
-+SET_TARGET_PROPERTIES(${IMPL_TARGET} PROPERTIES OUTPUT_NAME ${LIBNAME})
- TARGET_COMPILE_DEFINITIONS(${IMPL_TARGET}
++set_target_properties(${IMPL_TARGET} PROPERTIES OUTPUT_NAME ${LIBNAME})
+ target_compile_definitions(${IMPL_TARGET}
      PRIVATE AL_BUILD_LIBRARY AL_ALEXT_PROTOTYPES ${CPP_DEFS})
- TARGET_COMPILE_OPTIONS(${IMPL_TARGET} PRIVATE ${C_FLAGS})
+ target_compile_options(${IMPL_TARGET} PRIVATE ${C_FLAGS})
