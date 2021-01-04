@@ -1,7 +1,7 @@
 set(TARGET_WEBP webp)
 set(TARGET_WEBP_STATIC webp_static)
-set(URL_WEBP http://downloads.webmproject.org/releases/webp/libwebp-1.0.2.tar.gz)
-set(URL_MD5_WEBP 02c0c55f1dd8612cd4d462e3409ad35d)
+set(URL_WEBP http://downloads.webmproject.org/releases/webp/libwebp-1.1.0.tar.gz)
+set(URL_MD5_WEBP 7e047f2cbaf584dff7a8a7e0f8572f18)
 set(DEST_WEBP ${DESTINATION_PATH}/webp)
 
 set(WEBP_CMAKE_ARGS
@@ -12,7 +12,6 @@ set(WEBP_CMAKE_ARGS
 ExternalProject_Add(project_${TARGET_WEBP}
 	URL ${URL_WEBP}
 	URL_MD5 ${URL_MD5_WEBP}
-	PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/patches/CMakeLists_webp.txt ${EP_BASE}/Source/project_${TARGET_WEBP}/CMakeLists.txt
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS} ${WEBP_CMAKE_ARGS} -DBUILD_SHARED_LIBS=ON
 	BUILD_IN_SOURCE 0
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different libwebp.so ${DEST_WEBP}/${ARCH}/libwebp.so
