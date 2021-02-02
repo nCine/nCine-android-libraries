@@ -13,6 +13,7 @@ ExternalProject_Add(project_${TARGET_WEBP}
 	URL ${URL_WEBP}
 	URL_MD5 ${URL_MD5_WEBP}
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS} ${WEBP_CMAKE_ARGS} -DBUILD_SHARED_LIBS=ON
+	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different libwebp.so ${DEST_WEBP}/${ARCH}/libwebp.so
 		COMMAND ${CMAKE_COMMAND} -E copy_directory ${EP_BASE}/Source/project_${TARGET_WEBP}/src/webp ${DEST_WEBP}/include/webp
@@ -25,6 +26,7 @@ ExternalProject_Add(project_${TARGET_WEBP_STATIC}
 	DOWNLOAD_COMMAND ""
 	SOURCE_DIR ${EP_BASE}/Source/project_${TARGET_WEBP}
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS} ${WEBP_CMAKE_ARGS} -DBUILD_SHARED_LIBS=OFF
+	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different libwebp.a ${DEST_WEBP}/${ARCH}/libwebp.a
 )
@@ -33,9 +35,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_WEBP} POST_BUILD
 		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_WEBP}/${ARCH}/libwebp.so
 		COMMENT "Stripping the dynamic WebP library")
-endif()
 
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_WEBP_STATIC} POST_BUILD
 		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_WEBP}/${ARCH}/libwebp.a
 		COMMENT "Stripping the static WebP library")

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.12)
 project(nCine-android-libraries NONE)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
@@ -42,7 +42,6 @@ include(crosscompile_args)
 include(ExternalProject)
 include(ProcessorCount)
 ProcessorCount(CPUS)
-set(PARALLEL_MAKE make -j${CPUS})
 
 include(webp)
 include(png)

@@ -13,7 +13,7 @@ ExternalProject_Add(project_${TARGET_VORBIS}
 	URL ${URL_VORBIS}
 	URL_MD5 ${URL_MD5_VORBIS}
 	CONFIGURE_COMMAND ./configure ${CONFIGURE_TOOLCHAIN_ARGS} OGG_LIBS=-L${DESTINATION_PATH}/ogg/${ARCH} OGG_CFLAGS=-I${EP_BASE}/Source/project_${TARGET_OGG}/include
-	BUILD_COMMAND ${PARALLEL_MAKE}
+	BUILD_COMMAND make -j${CPUS}
 	BUILD_IN_SOURCE 1
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_VORBIS}/lib/.libs/libvorbis.so ${DEST_VORBIS}/${ARCH}/libvorbis.so
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_VORBIS}/lib/.libs/libvorbis.a ${DEST_VORBIS}/${ARCH}/libvorbis.a

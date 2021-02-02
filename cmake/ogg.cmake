@@ -7,7 +7,7 @@ ExternalProject_Add(project_${TARGET_OGG}
 	URL ${URL_OGG}
 	URL_MD5 ${URL_MD5_OGG}
 	CONFIGURE_COMMAND ./configure ${CONFIGURE_TOOLCHAIN_ARGS}
-	BUILD_COMMAND ${PARALLEL_MAKE}
+	BUILD_COMMAND make -j${CPUS}
 	BUILD_IN_SOURCE 1
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_OGG}/src/.libs/libogg.so ${DEST_OGG}/${ARCH}/libogg.so
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_OGG}/src/.libs/libogg.a ${DEST_OGG}/${ARCH}/libogg.a

@@ -8,7 +8,7 @@ ExternalProject_Add(project_${TARGET_LUA}
 	URL_MD5 ${URL_MD5_LUA}
 	PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/patches/CMakeLists_lua.txt ${EP_BASE}/Source/project_${TARGET_LUA}/CMakeLists.txt
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS}
-	BUILD_COMMAND ${PARALLEL_MAKE}
+	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different liblua5.4.so ${DEST_LUA}/${ARCH}/liblua.so
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different liblua.a ${DEST_LUA}/${ARCH}/liblua.a

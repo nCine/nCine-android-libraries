@@ -8,7 +8,7 @@ ExternalProject_Add(project_${TARGET_PNG}
 	URL_MD5 ${URL_PNG_MD5}
 	PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/patches/png.patch
 	CMAKE_ARGS -DPNG_TESTS=OFF ${CMAKE_TOOLCHAIN_ARGS}
-	BUILD_COMMAND ${PARALLEL_MAKE}
+	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different libpng16.so ${DEST_PNG}/${ARCH}/libpng16.so
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different libpng16.a ${DEST_PNG}/${ARCH}/libpng16.a
