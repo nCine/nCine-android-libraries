@@ -7,7 +7,6 @@ env:
 
      - nCine-android-libraries artifact from branch 'BRANCH_NAME' with commit id ${{ github.sha }}"
   DEPLOY_BRANCH: android-libraries-ARCHITECTURE
-  NDK_VERSION: r20
 
 on: [push, workflow_dispatch]
 
@@ -30,15 +29,8 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libncurses5
 
-    - name: 'Download Android NDK'
-      run: |
-        cd ..
-        curl -fsSL https://dl.google.com/android/repository/android-ndk-$NDK_VERSION-linux-x86_64.zip -o ndk.zip
-        unzip -q ndk.zip && rm -f ndk.zip
-
     - name: 'CMake Configuration'
       run: |
-        export ANDROID_NDK_HOME=$PWD/../android-ndk-$NDK_VERSION
         cmake -B ../build-${{ matrix.ARCH }} -D ARCH=${{ matrix.ARCH }} -D PLATFORM=21 -D CMAKE_BUILD_TYPE=${{ matrix.BuildType }}
 
     - name: 'Make'
