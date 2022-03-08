@@ -1,17 +1,17 @@
 set(CMAKE_TOOLCHAIN_ARGS
 	-DCMAKE_TOOLCHAIN_FILE=${NDK_DIR}/build/cmake/android.toolchain.cmake
-	-DANDROID_PLATFORM=android-${PLATFORM},
+	-DANDROID_PLATFORM=android-${PLATFORM}
 	-DANDROID_ABI=${ARCH}
 )
 
 set(TOOLCHAIN ${NDK_DIR}/toolchains/llvm/prebuilt/${HOST_TAG})
-set(AR ${TOOLCHAIN}/bin/${HOST}-ar)
-set(AS ${TOOLCHAIN}/bin/${HOST}-as)
-set(CC ${TOOLCHAIN}/bin/${TARGET}-clang)
-set(CXX ${TOOLCHAIN}/bin/${TARGET}-clang++)
-set(LD ${TOOLCHAIN}/bin/${HOST}-ld)
-set(RANLIB ${TOOLCHAIN}/bin/${HOST}-ranlib)
-set(STRIP ${TOOLCHAIN}/bin/${HOST}-strip)
+find_program(AR NAMES ${HOST}-ar llvm-ar PATHS ${TOOLCHAIN}/bin REQUIRED)
+find_program(AS NAMES ${HOST}-as PATHS ${TOOLCHAIN}/bin REQUIRED)
+find_program(CC NAMES ${TARGET}-clang PATHS ${TOOLCHAIN}/bin REQUIRED)
+find_program(CXX NAMES ${TARGET}-clang++ PATHS ${TOOLCHAIN}/bin REQUIRED)
+find_program(LD NAMES ${HOST}-ld ld PATHS ${TOOLCHAIN}/bin REQUIRED)
+find_program(RANLIB NAMES ${HOST}-ranlib llvm-ranlib PATHS ${TOOLCHAIN}/bin REQUIRED)
+find_program(STRIP NAMES ${HOST}-strip llvm-strip PATHS ${TOOLCHAIN}/bin REQUIRED)
 
 set(CONFIGURE_TOOLCHAIN_ARGS_NOFLAGS --host=${HOST} AR=${AR} AS=${AS} CC=${CC} CXX=${CXX} LD=${LD} RANLIB=${RANLIB} STRIP=${STRIP})
 set(CONFIGURE_TOOLCHAIN_ARGS ${CONFIGURE_TOOLCHAIN_ARGS_NOFLAGS} CFLAGS=${CROSS_CFLAGS} LDFLAGS=${CROSS_LDFLAGS})
