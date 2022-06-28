@@ -1,7 +1,7 @@
-diff -urN openal-soft-1.22.0.orig/CMakeLists.txt openal-soft-1.22.0/CMakeLists.txt
---- openal-soft-1.22.0.orig/CMakeLists.txt	2022-04-23 03:46:14.000000000 +0200
-+++ openal-soft-1.22.0/CMakeLists.txt	2022-04-25 01:25:14.862904864 +0200
-@@ -1392,10 +1392,7 @@
+diff -urN openal-soft-1.22.2.orig/CMakeLists.txt openal-soft-1.22.2/CMakeLists.txt
+--- openal-soft-1.22.2.orig/CMakeLists.txt	2022-06-27 10:33:53.000000000 +0200
++++ openal-soft-1.22.2/CMakeLists.txt	2022-06-29 00:29:22.939235800 +0200
+@@ -1409,10 +1409,7 @@
      ${OpenAL_SOURCE_DIR}/common
  )
  
