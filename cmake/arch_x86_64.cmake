@@ -3,8 +3,8 @@ set(HOST x86_64-linux-android)
 set(TARGET x86_64-linux-android${PLATFORM})
 set(PROCESSOR x86_64) # for CMAKE_SYSTEM_PROCESSOR
 
-set(NDK_CFLAGS "-ffunction-sections -funwind-tables -fstack-protector-strong -fPIC -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes")
-set(NDK_LDFLAGS "-no-canonical-prefixes")
+set(NDK_CFLAGS "-DANDROID -fPIC -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -D_FORTIFY_SOURCE=2")
+set(NDK_LDFLAGS "-Wl,--build-id=sha1 -Wl,--fatal-warnings -Wl,--gc-sections -no-canonical-prefixes")
 
 set(BUILD_CFLAGS "-g")
  if(CMAKE_BUILD_TYPE STREQUAL "Release")

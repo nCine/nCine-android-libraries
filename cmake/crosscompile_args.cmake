@@ -6,7 +6,7 @@ set(CMAKE_TOOLCHAIN_ARGS
 
 set(TOOLCHAIN ${NDK_DIR}/toolchains/llvm/prebuilt/${HOST_TAG})
 find_program(AR NAMES ${HOST}-ar llvm-ar PATHS ${TOOLCHAIN}/bin REQUIRED)
-find_program(AS NAMES ${HOST}-as PATHS ${TOOLCHAIN}/bin REQUIRED)
+find_program(AS NAMES ${HOST}-as yasm llvm-as PATHS ${TOOLCHAIN}/bin REQUIRED)
 find_program(CC NAMES ${TARGET}-clang PATHS ${TOOLCHAIN}/bin REQUIRED)
 find_program(CXX NAMES ${TARGET}-clang++ PATHS ${TOOLCHAIN}/bin REQUIRED)
 find_program(LD NAMES ${HOST}-ld ld PATHS ${TOOLCHAIN}/bin REQUIRED)

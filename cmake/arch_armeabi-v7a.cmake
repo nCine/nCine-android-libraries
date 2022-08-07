@@ -12,8 +12,8 @@ else()
 	set(ARM_MFPU "vfpv3-d16")
 endif()
 
-set(NDK_CFLAGS "-fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as")
-set(NDK_LDFLAGS "-no-canonical-prefixes")
+set(NDK_CFLAGS "-DANDROID -fPIC -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -D_FORTIFY_SOURCE=2")
+set(NDK_LDFLAGS "-Wl,--build-id=sha1 -Wl,--fatal-warnings -Wl,--gc-sections -no-canonical-prefixes")
 set(ARCH_CFLAGS "-march=armv7-a -mfpu=${ARM_MFPU} -mfloat-abi=softfp")
 set(ARCH_LDFLAGS "-march=armv7-a -Wl,--fix-cortex-a8")
 
