@@ -1,7 +1,7 @@
 set(TARGET_WEBP webp)
 set(TARGET_WEBP_STATIC webp_static)
-set(URL_WEBP http://downloads.webmproject.org/releases/webp/libwebp-1.2.4.tar.gz)
-set(URL_MD5_WEBP a80a95461a751118bb7d457b1afca50d)
+set(URL_WEBP http://downloads.webmproject.org/releases/webp/libwebp-1.3.0.tar.gz)
+set(URL_MD5_WEBP 994cf2efb664ef5140fa0b56b83fa721)
 set(DEST_WEBP ${DESTINATION_PATH}/webp)
 
 set(WEBP_CMAKE_ARGS
@@ -16,6 +16,7 @@ ExternalProject_Add(project_${TARGET_WEBP}
 	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different libwebp.so ${DEST_WEBP}/${ARCH}/libwebp.so
+		COMMAND ${CMAKE_COMMAND} -E copy_if_different libsharpyuv.so ${DEST_WEBP}/${ARCH}/libsharpyuv.so
 		COMMAND ${CMAKE_COMMAND} -E copy_directory ${EP_BASE}/Source/project_${TARGET_WEBP}/src/webp ${DEST_WEBP}/include/webp
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different src/webp/config.h ${DEST_WEBP}/include/webp
 		COMMAND ${CMAKE_COMMAND} -E remove ${DEST_WEBP}/include/webp/config.h.in
@@ -29,14 +30,17 @@ ExternalProject_Add(project_${TARGET_WEBP_STATIC}
 	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
 	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different libwebp.a ${DEST_WEBP}/${ARCH}/libwebp.a
+		COMMAND ${CMAKE_COMMAND} -E copy_if_different libsharpyuv.a ${DEST_WEBP}/${ARCH}/libsharpyuv.a
 )
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_custom_command(TARGET project_${TARGET_WEBP} POST_BUILD
 		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_WEBP}/${ARCH}/libwebp.so
-		COMMENT "Stripping the dynamic WebP library")
+		COMMAND ${STRIP} ${STRIP_SHARED_ARGS} ${DEST_WEBP}/${ARCH}/libsharpyuv.so
+		COMMENT "Stripping the dynamic WebP libraries")
 
 	add_custom_command(TARGET project_${TARGET_WEBP_STATIC} POST_BUILD
 		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_WEBP}/${ARCH}/libwebp.a
-		COMMENT "Stripping the static WebP library")
+		COMMAND ${STRIP} ${STRIP_STATIC_ARGS} ${DEST_WEBP}/${ARCH}/libsharpyuv.a
+		COMMENT "Stripping the static WebP libraries")
 endif()
