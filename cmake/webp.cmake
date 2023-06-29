@@ -1,7 +1,7 @@
 set(TARGET_WEBP webp)
 set(TARGET_WEBP_STATIC webp_static)
-set(URL_WEBP http://downloads.webmproject.org/releases/webp/libwebp-1.3.0.tar.gz)
-set(URL_MD5_WEBP 994cf2efb664ef5140fa0b56b83fa721)
+set(URL_WEBP http://downloads.webmproject.org/releases/webp/libwebp-1.3.1.tar.gz)
+set(URL_MD5_WEBP 0ff59e5598753f47519e3e61c12f8cfd)
 set(DEST_WEBP ${DESTINATION_PATH}/webp)
 
 set(WEBP_CMAKE_ARGS
