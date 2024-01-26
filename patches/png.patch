@@ -1,16 +1,14 @@
-diff -urN libpng-1.6.40.orig/CMakeLists.txt libpng-1.6.40/CMakeLists.txt
---- libpng-1.6.40.orig/CMakeLists.txt	2023-06-21 21:06:40.000000000 +0200
-+++ libpng-1.6.40/CMakeLists.txt	2023-09-15 15:32:51.143245986 +0200
-@@ -641,10 +641,8 @@
+diff -urN libpng-1.6.41.orig/CMakeLists.txt libpng-1.6.41/CMakeLists.txt
+--- libpng-1.6.41.orig/CMakeLists.txt	2024-01-24 17:59:00.000000000 +0100
++++ libpng-1.6.41/CMakeLists.txt	2024-01-27 00:15:32.874313705 +0100
+@@ -642,9 +642,7 @@
    list(APPEND PNG_LIBRARY_TARGETS png_shared)
    set_target_properties(png_shared PROPERTIES
                          OUTPUT_NAME "${PNG_SHARED_OUTPUT_NAME}"
 -                        DEBUG_POSTFIX "${PNG_DEBUG_POSTFIX}"
 -                        VERSION "${PNGLIB_SHARED_VERSION}"
 -                        SOVERSION "${PNGLIB_ABI_VERSION}")
--  if(UNIX AND AWK)
 +                        DEBUG_POSTFIX "${PNG_DEBUG_POSTFIX}")
-+  if((UNIX AND NOT ANDROID) AND AWK)
+   if(UNIX AND AWK)
      if(HAVE_LD_VERSION_SCRIPT)
        set_target_properties(png_shared PROPERTIES
-                             LINK_FLAGS "-Wl,--version-script='${CMAKE_CURRENT_BINARY_DIR}/libpng.vers'")
