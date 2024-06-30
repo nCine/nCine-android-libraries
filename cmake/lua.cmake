@@ -1,6 +1,6 @@
 set(TARGET_LUA lua)
-set(URL_LUA https://www.lua.org/ftp/lua-5.4.6.tar.gz)
-set(URL_MD5_LUA 25a429319dff20dfbfb9956c2b5be911)
+set(URL_LUA https://www.lua.org/ftp/lua-5.4.7.tar.gz)
+set(URL_MD5_LUA fc3f3291353bbe6ee6dec85ee61331e8)
 set(DEST_LUA ${DESTINATION_PATH}/lua)
 
 ExternalProject_Add(project_${TARGET_LUA}
