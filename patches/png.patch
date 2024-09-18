@@ -1,7 +1,7 @@
-diff -urN libpng-1.6.43.orig/CMakeLists.txt libpng-1.6.43/CMakeLists.txt
---- libpng-1.6.43.orig/CMakeLists.txt	2024-02-23 10:51:40.000000000 +0100
-+++ libpng-1.6.43/CMakeLists.txt	2024-03-05 00:34:27.575638906 +0100
-@@ -693,9 +693,7 @@
+diff -urN libpng-1.6.44.orig/CMakeLists.txt libpng-1.6.44/CMakeLists.txt
+--- libpng-1.6.44.orig/CMakeLists.txt	2024-09-12 22:44:44.000000000 +0200
++++ libpng-1.6.44/CMakeLists.txt	2024-09-18 02:03:37.816428545 +0200
+@@ -692,9 +692,7 @@
    list(APPEND PNG_LIBRARY_TARGETS png_shared)
    set_target_properties(png_shared PROPERTIES
                          OUTPUT_NAME "${PNG_SHARED_OUTPUT_NAME}"
