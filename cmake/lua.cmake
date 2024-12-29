@@ -3,10 +3,15 @@ set(URL_LUA https://www.lua.org/ftp/lua-5.4.7.tar.gz)
 set(URL_MD5_LUA fc3f3291353bbe6ee6dec85ee61331e8)
 set(DEST_LUA ${DESTINATION_PATH}/lua)
 
+if(${ARCH} STREQUAL "armeabi-v7a")
+	set(32BITS_LUA_PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/patches/lua_liolib.patch)
+endif()
+
 ExternalProject_Add(project_${TARGET_LUA}
 	URL ${URL_LUA}
 	URL_MD5 ${URL_MD5_LUA}
 	PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/patches/CMakeLists_lua.txt ${EP_BASE}/Source/project_${TARGET_LUA}/CMakeLists.txt
+		COMMAND ${32BITS_LUA_PATCH_COMMAND}
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS}
 	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
