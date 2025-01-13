@@ -1,6 +1,6 @@
 set(TARGET_OPENAL openal)
-set(URL_OPENAL https://github.com/kcat/openal-soft/archive/1.24.0.tar.gz)
-set(URL_MD5_OPENAL 9bf204aa3580b35fb27604484f51c6e0)
+set(URL_OPENAL https://github.com/kcat/openal-soft/archive/1.24.2.tar.gz)
+set(URL_MD5_OPENAL 2befc873d26f4eed10c06f272c48c5ec)
 set(DEST_OPENAL ${DESTINATION_PATH}/openal)
 
 set(LIBTYPE_OPENAL "DYNAMIC")
