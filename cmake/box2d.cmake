@@ -1,7 +1,7 @@
 set(TARGET_BOX2D box2d)
 set(TARGET_BOX2D_STATIC box2d_static)
-set(URL_BOX2D https://github.com/erincatto/box2d/archive/v2.4.1.tar.gz)
-set(URL_MD5_BOX2D 00d2c9c66da494aed947e03bff73e080)
+set(URL_BOX2D https://github.com/erincatto/box2d/archive/v2.4.2.tar.gz)
+set(URL_MD5_BOX2D b1cbd9b9f190278e33293fa814bc630a)
 set(DEST_BOX2D ${DESTINATION_PATH}/box2d)
 
 set(BOX2D_CMAKE_ARGS -DBOX2D_BUILD_UNIT_TESTS=OFF -DBOX2D_BUILD_TESTBED=OFF -DBOX2D_BUILD_DOCS=OFF)
@@ -9,6 +9,7 @@ set(BOX2D_CMAKE_ARGS -DBOX2D_BUILD_UNIT_TESTS=OFF -DBOX2D_BUILD_TESTBED=OFF -DBO
 ExternalProject_Add(project_${TARGET_BOX2D}
 	URL ${URL_BOX2D}
 	URL_MD5 ${URL_MD5_BOX2D}
+	PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/patches/box2d_242.patch
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS} ${BOX2D_CMAKE_ARGS} -DBUILD_SHARED_LIBS=ON
 	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
@@ -20,6 +21,7 @@ ExternalProject_Add(project_${TARGET_BOX2D_STATIC}
 	DEPENDS project_${TARGET_BOX2D}
 	DOWNLOAD_COMMAND ""
 	SOURCE_DIR ${EP_BASE}/Source/project_${TARGET_BOX2D}
+	# Patch has already been applied when building the shared library
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS} ${BOX2D_CMAKE_ARGS} -DBUILD_SHARED_LIBS=OFF
 	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
