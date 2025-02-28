@@ -7,7 +7,7 @@ option(BUILD_OGG "Build the OGG library" ON)
 option(BUILD_VORBIS "Build the Vorbis library" ON)
 option(BUILD_OPENAL "Build the OpenAL-soft library" ON)
 option(BUILD_LUA "Build the Lua library and interepreter" ON)
-option(BUILD_BOX2D "Build the Box2D-soft library" ON)
+option(BUILD_BOX2D "Build the Box2D library" ON)
 option(BUILD_CURL "Build the curl library" ON)
 
 # Avoid warning about `DOWNLOAD_EXTRACT_TIMESTAMP` in CMake 3.24
@@ -36,7 +36,7 @@ set_property(CACHE ARCH PROPERTY STRINGS armeabi-v7a arm64-v8a x86_64)
 message(STATUS "Available architectures are: armeabi-v7a, arm64-v8a, x86_64")
 message(STATUS "ARCH is: " ${ARCH})
 
-set(PLATFORM "21" CACHE STRING "Android platform level")
+set(PLATFORM "28" CACHE STRING "Android platform level")
 message(STATUS "PLATFORM is: " ${PLATFORM})
 
 if(WIN32)
