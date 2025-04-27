@@ -31,10 +31,7 @@ jobs:
 
     - name: 'CMake Configuration'
       run: |
-        if [[ "${{ matrix.ARCH }}" == "armeabi-v7a" ]]; then
-          export CMAKE_ARGS="-D BUILD_BOX2D=OFF" # Box2D v3.x does not support 32-bit platforms
-        fi
-        cmake -B ../build-${{ matrix.ARCH }} -D ARCH=${{ matrix.ARCH }} -D CMAKE_BUILD_TYPE=${{ matrix.BuildType }} $CMAKE_ARGS
+        cmake -B ../build-${{ matrix.ARCH }} -D ARCH=${{ matrix.ARCH }} -D PLATFORM=21 -D CMAKE_BUILD_TYPE=${{ matrix.BuildType }}
 
     - name: 'Make'
       run: |

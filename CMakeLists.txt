@@ -36,7 +36,7 @@ set_property(CACHE ARCH PROPERTY STRINGS armeabi-v7a arm64-v8a x86_64)
 message(STATUS "Available architectures are: armeabi-v7a, arm64-v8a, x86_64")
 message(STATUS "ARCH is: " ${ARCH})
 
-set(PLATFORM "28" CACHE STRING "Android platform level")
+set(PLATFORM "21" CACHE STRING "Android platform level")
 message(STATUS "PLATFORM is: " ${PLATFORM})
 
 if(WIN32)
