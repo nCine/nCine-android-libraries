@@ -1,6 +1,6 @@
 set(TARGET_CURL curl)
-set(URL_CURL https://curl.se/download/curl-8.12.1.tar.gz)
-set(URL_MD5_CURL 3b651db7d8fbf3d4650b9e9cf8a8180d)
+set(URL_CURL https://curl.se/download/curl-8.14.1.tar.gz)
+set(URL_MD5_CURL 745dfc1da8c44eb9ce6ede16fd102c32)
 set(DEST_CURL ${DESTINATION_PATH}/curl)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")

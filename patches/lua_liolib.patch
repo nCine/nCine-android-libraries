@@ -1,6 +1,6 @@
-diff -urN lua-5.4.7.orig/src/liolib.c lua-5.4.7/src/liolib.c
---- lua-5.4.7.orig/src/liolib.c	2024-06-14 00:15:09.000000000 +0200
-+++ lua-5.4.7/src/liolib.c	2024-12-29 20:29:29.979013962 +0100
+diff -urN lua-5.4.8.orig/src/liolib.c lua-5.4.8/src/liolib.c
+--- lua-5.4.8.orig/src/liolib.c	2025-05-21 23:09:16.000000000 +0200
++++ lua-5.4.8/src/liolib.c	2025-06-09 12:26:15.379963138 +0200
 @@ -119,9 +119,9 @@
  
  #include <sys/types.h>
