@@ -1,6 +1,6 @@
 set(TARGET_PNG png)
-set(URL_PNG http://downloads.sourceforge.net/project/libpng/libpng16/1.6.47/libpng-1.6.47.tar.gz)
-set(URL_MD5_PNG 6b46d508eb5da4d9c98722c69d7e8b67)
+set(URL_PNG http://downloads.sourceforge.net/project/libpng/libpng16/1.6.49/libpng-1.6.49.tar.gz)
+set(URL_MD5_PNG bf0d1b5643244d28012b74e1e7ef82de)
 set(DEST_PNG ${DESTINATION_PATH}/png)
 
 ExternalProject_Add(project_${TARGET_PNG}

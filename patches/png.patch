@@ -1,14 +1,14 @@
-diff -urN libpng-1.6.47.orig/CMakeLists.txt libpng-1.6.47/CMakeLists.txt
---- libpng-1.6.47.orig/CMakeLists.txt	2025-02-18 10:18:30.000000000 +0100
-+++ libpng-1.6.47/CMakeLists.txt	2025-02-20 00:33:40.728689212 +0100
-@@ -603,9 +603,7 @@
+diff -urN libpng-1.6.49.orig/CMakeLists.txt libpng-1.6.49/CMakeLists.txt
+--- libpng-1.6.49.orig/CMakeLists.txt	2025-06-12 19:05:46.000000000 +0200
++++ libpng-1.6.49/CMakeLists.txt	2025-06-16 15:50:31.448471208 +0200
+@@ -659,9 +659,7 @@
    list(APPEND PNG_LIBRARY_TARGETS png_shared)
-   set_target_properties(png_shared PROPERTIES
-                         OUTPUT_NAME "${PNG_SHARED_OUTPUT_NAME}"
--                        DEBUG_POSTFIX "${PNG_DEBUG_POSTFIX}"
--                        VERSION "${PNGLIB_SHARED_VERSION}"
--                        SOVERSION "${PNGLIB_ABI_VERSION}")
-+                        DEBUG_POSTFIX "${PNG_DEBUG_POSTFIX}")
+   set_target_properties(png_shared
+                         PROPERTIES OUTPUT_NAME "${PNG_SHARED_OUTPUT_NAME}"
+-                                   DEBUG_POSTFIX "${PNG_DEBUG_POSTFIX}"
+-                                   VERSION "${PNGLIB_SHARED_VERSION}"
+-                                   SOVERSION "${PNGLIB_ABI_VERSION}")
++                                   DEBUG_POSTFIX "${PNG_DEBUG_POSTFIX}")
    if(UNIX AND AWK)
      if(HAVE_LD_VERSION_SCRIPT)
-       set_target_properties(png_shared PROPERTIES
+       set_target_properties(png_shared
