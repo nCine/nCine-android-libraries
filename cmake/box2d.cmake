@@ -1,7 +1,7 @@
 set(TARGET_BOX2D box2d)
 set(TARGET_BOX2D_STATIC box2d_static)
-set(URL_BOX2D https://github.com/erincatto/box2d/archive/v3.1.0.tar.gz)
-set(URL_MD5_BOX2D 27cab62d601491bea48cba545e3e3b24)
+set(URL_BOX2D https://github.com/erincatto/box2d/archive/v3.1.1.tar.gz)
+set(URL_MD5_BOX2D d73952c02f83dfcb708badb1c5e63909)
 set(DEST_BOX2D ${DESTINATION_PATH}/box2d)
 
 set(BOX2D_CMAKE_ARGS -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_DOCS=OFF)

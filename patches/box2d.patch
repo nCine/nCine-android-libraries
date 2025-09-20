@@ -1,10 +1,10 @@
-diff -urN box2d-3.1.0.orig/src/CMakeLists.txt box2d-3.1.0/src/CMakeLists.txt
---- box2d-3.1.0.orig/src/CMakeLists.txt	2025-04-20 06:12:49.000000000 +0200
-+++ box2d-3.1.0/src/CMakeLists.txt	2025-04-27 19:54:17.381560882 +0200
-@@ -93,8 +93,6 @@
+diff -urN box2d-3.1.1.orig/src/CMakeLists.txt box2d-3.1.1/src/CMakeLists.txt
+--- box2d-3.1.1.orig/src/CMakeLists.txt	2025-06-04 02:50:24.000000000 +0200
++++ box2d-3.1.1/src/CMakeLists.txt	2025-09-20 03:18:40.853455312 +0200
+@@ -92,8 +92,6 @@
+ 	C_STANDARD 17
      C_STANDARD_REQUIRED YES
      C_EXTENSIONS YES
- 	COMPILE_WARNING_AS_ERROR ON
 -    VERSION ${PROJECT_VERSION}
 -    SOVERSION ${PROJECT_VERSION_MAJOR}
  	DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX}
