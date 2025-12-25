@@ -1,16 +1,12 @@
-diff -urN openal-soft-1.24.3.orig/CMakeLists.txt openal-soft-1.24.3/CMakeLists.txt
---- openal-soft-1.24.3.orig/CMakeLists.txt	2025-03-29 05:08:24.000000000 +0100
-+++ openal-soft-1.24.3/CMakeLists.txt	2025-04-01 20:15:05.953637032 +0200
-@@ -1569,11 +1569,7 @@
-     ${OpenAL_SOURCE_DIR}/common
- )
+diff -urN openal-soft-1.25.0.orig/CMakeLists.txt openal-soft-1.25.0/CMakeLists.txt
+--- openal-soft-1.25.0.orig/CMakeLists.txt	2025-12-22 10:17:45.000000000 +0100
++++ openal-soft-1.25.0/CMakeLists.txt	2025-12-25 18:19:53.899368224 +0100
+@@ -1772,8 +1772,6 @@
  
--set_target_properties(${IMPL_TARGET} PROPERTIES ${ALSOFT_STD_VERSION_PROPS}
--    OUTPUT_NAME ${LIBNAME}
--    VERSION ${LIB_VERSION}
--    SOVERSION ${LIB_MAJOR_VERSION}
--)
-+set_target_properties(${IMPL_TARGET} PROPERTIES ${ALSOFT_STD_VERSION_PROPS} OUTPUT_NAME ${LIBNAME})
+ set_target_properties(${IMPL_TARGET} PROPERTIES ${ALSOFT_STD_VERSION_PROPS}
+     OUTPUT_NAME ${LIBNAME}
+-    VERSION ${OpenAL_VERSION}
+-    SOVERSION ${OpenAL_VERSION_MAJOR}
+ )
  target_compile_definitions(${IMPL_TARGET}
      PRIVATE AL_BUILD_LIBRARY AL_ALEXT_PROTOTYPES  "ALC_API=${EXPORT_DECL}" "AL_API=${EXPORT_DECL}"
-     ${CPP_DEFS})
