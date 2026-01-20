@@ -1,7 +1,7 @@
-diff -urN openal-soft-1.25.0.orig/CMakeLists.txt openal-soft-1.25.0/CMakeLists.txt
---- openal-soft-1.25.0.orig/CMakeLists.txt	2025-12-22 10:17:45.000000000 +0100
-+++ openal-soft-1.25.0/CMakeLists.txt	2025-12-25 18:19:53.899368224 +0100
-@@ -1772,8 +1772,6 @@
+diff -urN openal-soft-1.25.1.orig/CMakeLists.txt openal-soft-1.25.1/CMakeLists.txt
+--- openal-soft-1.25.1.orig/CMakeLists.txt	2026-01-20 03:56:03.000000000 +0100
++++ openal-soft-1.25.1/CMakeLists.txt	2026-01-20 13:24:08.949857275 +0100
+@@ -1779,8 +1779,6 @@
  
  set_target_properties(${IMPL_TARGET} PROPERTIES ${ALSOFT_STD_VERSION_PROPS}
      OUTPUT_NAME ${LIBNAME}
