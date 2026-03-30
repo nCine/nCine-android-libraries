@@ -1,6 +1,6 @@
 set(TARGET_LUA lua)
-set(URL_LUA https://www.lua.org/ftp/lua-5.4.8.tar.gz)
-set(URL_MD5_LUA 81cf5265b8634967d8a7480d238168ce)
+set(URL_LUA https://www.lua.org/ftp/lua-5.5.0.tar.gz)
+set(URL_MD5_LUA c8b73c52a8c3c80978512f17347ee24d)
 set(DEST_LUA ${DESTINATION_PATH}/lua)
 
 if(${ARCH} STREQUAL "armeabi-v7a")
@@ -15,7 +15,7 @@ ExternalProject_Add(project_${TARGET_LUA}
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS}
 	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
-	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different liblua5.4.so ${DEST_LUA}/${ARCH}/liblua.so
+	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different liblua5.5.so ${DEST_LUA}/${ARCH}/liblua.so
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different liblua.a ${DEST_LUA}/${ARCH}/liblua.a
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_LUA}/src/lua.h ${DEST_LUA}/include/lua.h
 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${EP_BASE}/Source/project_${TARGET_LUA}/src/luaconf.h ${DEST_LUA}/include/luaconf.h
