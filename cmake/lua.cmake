@@ -1,6 +1,6 @@
 set(TARGET_LUA lua)
-set(URL_LUA https://www.lua.org/ftp/lua-5.5.0.tar.gz)
-set(URL_MD5_LUA c8b73c52a8c3c80978512f17347ee24d)
+set(URL_LUA https://www.lua.org/ftp/lua-5.5.1.tar.gz)
+set(URL_MD5_LUA 30bd062a4d911c2d2df6cc518eabec37)
 set(DEST_LUA ${DESTINATION_PATH}/lua)
 
 if(${ARCH} STREQUAL "armeabi-v7a")
