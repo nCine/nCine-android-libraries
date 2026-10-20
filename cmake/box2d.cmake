@@ -1,7 +1,7 @@
 set(TARGET_BOX2D box2d)
 set(TARGET_BOX2D_STATIC box2d_static)
-set(URL_BOX2D https://github.com/erincatto/box2d/archive/v3.1.1.tar.gz)
-set(URL_MD5_BOX2D d73952c02f83dfcb708badb1c5e63909)
+set(URL_BOX2D https://github.com/erincatto/box2d/archive/v3.2.0.tar.gz)
+set(URL_MD5_BOX2D 595bb9c5d706b8791e3ba91385bc6f64)
 set(DEST_BOX2D ${DESTINATION_PATH}/box2d)
 
 set(BOX2D_CMAKE_ARGS -DBOX2D_SAMPLES=OFF -DBOX2D_UNIT_TESTS=OFF -DBOX2D_DOCS=OFF)
@@ -13,7 +13,7 @@ ExternalProject_Add(project_${TARGET_BOX2D}
 	CMAKE_ARGS ${CMAKE_TOOLCHAIN_ARGS} ${BOX2D_CMAKE_ARGS} -DBUILD_SHARED_LIBS=ON
 	BUILD_COMMAND ${CMAKE_COMMAND} --build . --parallel
 	BUILD_IN_SOURCE 0
-	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different bin/libbox2d.so ${DEST_BOX2D}/${ARCH}/libbox2d.so
+	INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_if_different src/libbox2d.so ${DEST_BOX2D}/${ARCH}/libbox2d.so
 		COMMAND ${CMAKE_COMMAND} -E copy_directory ${EP_BASE}/Source/project_${TARGET_BOX2D}/include/box2d ${DEST_BOX2D}/include/box2d
 )
 

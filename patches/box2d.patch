@@ -1,7 +1,7 @@
-diff -urN box2d-3.1.1.orig/src/CMakeLists.txt box2d-3.1.1/src/CMakeLists.txt
---- box2d-3.1.1.orig/src/CMakeLists.txt	2025-06-04 02:50:24.000000000 +0200
-+++ box2d-3.1.1/src/CMakeLists.txt	2025-09-20 03:18:40.853455312 +0200
-@@ -92,8 +92,6 @@
+diff -urN box2d-3.2.0.orig/src/CMakeLists.txt box2d-3.2.0/src/CMakeLists.txt
+--- box2d-3.2.0.orig/src/CMakeLists.txt	2026-10-19 04:27:55.000000000 +0200
++++ box2d-3.2.0/src/CMakeLists.txt	2026-10-20 19:27:19.422816667 +0200
+@@ -111,8 +111,6 @@
  	C_STANDARD 17
      C_STANDARD_REQUIRED YES
      C_EXTENSIONS YES
